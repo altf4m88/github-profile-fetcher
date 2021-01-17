@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Nav from './Components/Nav/Nav';
 import Main from './Components/GitHub/Main';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class App extends Component{
   constructor(props){
@@ -15,7 +16,9 @@ class App extends Component{
     return(
       <React.Fragment>
         <Nav />
-        <Main />
+        <Router>
+          <Route exact path='/' component={Main} /> 
+        </Router>
       </React.Fragment>
     );
   }
