@@ -36,3 +36,102 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+
+.mainPage {
+  /* background-color: #e9ecef; */
+  margin-top: 10vh;
+  height: 60vh; 
+}
+
+
+.Specific{
+ background-color: #f8f9fa!important;
+ width: 60%;
+ /* box-shadow: 0 .125rem .25rem rgba(0,0.5,0.5,0.3)!important; */
+ padding: 2vh;
+}
+
+.SUsersData img {
+  height: 20vh;
+}
+
+.NotFave {
+  font-size: 35px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.NotFave:hover {
+ color: dimgrey;
+}
+
+
+.bl {
+  color: blue;
+}
+
+
+.form-signin input {
+margin: 10px auto;
+}
+
+.form-Reigester input{
+  margin: 10px auto;
+
+}
+
+.grey {
+  color:#343a40!important;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.im {
+  height: 25vh;
+  margin: 3vh auto;
+}
+
+
+
+.GitLogo {
+  width: 30vh;
+}
+
+
+
+.cp {
+  cursor: pointer;
+}
+
+
+
+.cp:hover {
+  padding: 1vh;
+}
+
