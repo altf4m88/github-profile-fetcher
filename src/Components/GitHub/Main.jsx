@@ -17,15 +17,16 @@ class Main extends Component{
     }
 
     Search = (e) => {
-        console.log(this.state.Data);
+        
         if(this.state.Data === '') return alert('Search text cannot be empty');
         if(this.state.checked){
+            console.log(this.state.Data);
             this.props.history.push({
-                Pathname: `/profile/${this.state.Data}`
+                pathname: `/profile/${this.state.Data}`
             })
         } else {
             this.props.history.push({
-                Pathname: `/search/${this.state.Data}`
+                pathname: `/search/${this.state.Data}`
             })
         }
     }
