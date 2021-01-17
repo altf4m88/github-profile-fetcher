@@ -127,11 +127,11 @@ input[type="file"] {
 
 .cp {
   cursor: pointer;
+  transition-duration: 0.5s;
+
 }
 
-
-
-.cp:hover {
-  padding: 1vh;
+.cp:hover{
+  transform: scale(1.05);
 }
 
