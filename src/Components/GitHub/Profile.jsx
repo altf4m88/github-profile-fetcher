@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Repositories from './Repositories';
 
 class Profile extends Component{
     constructor(props){
@@ -41,6 +42,8 @@ class Profile extends Component{
                     <img src={this.state.user.avatar_url} alt="" />
             <h4>Followers :<i className="bl">{this.state.user.followers}</i>  </h4> 
             <h4>Location :<i className="bl">{this.state.user.location}</i> </h4>
+
+                <Repositories user={this.props.match.params.login} />
 
                 </div>
                 </div>
