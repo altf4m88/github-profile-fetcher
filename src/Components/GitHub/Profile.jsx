@@ -64,30 +64,7 @@ class Profile extends Component{
             <React.Fragment>
                 {this.Profile()}
             
-                        <h3>here Last 5 repo</h3>
-                        <div className="lastfiveRepo">
-                        <div>
-                            <a href="https://github.com/f4h3m/CRUD_angular">
-                                CRUD_angular </a>
-                        </div>
-                        <div>
-                            <a href="https://github.com/f4h3m/cssOnly-preloader"> 
-                                cssOnly-preloader </a>
-                        </div>
-                        <div>
-                            <a href="https://github.com/f4h3m/devsonket.github.io"> 
-                                devsonket.github.io 
-                            </a>
-                        </div>
-                        <div>
-                            <a href="https://github.com/f4h3m/DigiCraft-EDD-Marketplace-WP-Theme">
-                                DigiCraft-EDD-Marketplace-WP-Theme
-                            </a>
-                        </div>
-                        <div>
-                            <a href="https://github.com/f4h3m/dope"> dope </a>
-                        </div>
-                        </div>
+                        
                         
             </React.Fragment>
         );
