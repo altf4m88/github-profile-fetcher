@@ -45,13 +45,13 @@ class Main extends Component{
                                     GitFetch - Profile Finder for GitHub
                                             </h1>
                                             <p className="main__subtitle">
-                                                Check out the repos, followers and more, just by entering a username!
+                                                Useless app since you can search user in GitHub site :/
                                             </p>
                                     </div>
                                         <div className="container">
-                                            <div className="check">
-                                                <input className="" type="checkbox" name="checked" onChange={this.handleChange} defaultValue={this.state.checked}/>
-                                                Go Direct to The user Profile
+                                            <div className="form-check">
+                                                <input className="form-check-input" id="directcheckbox" type="checkbox" name="checked" onChange={this.handleChange} defaultValue={this.state.checked}/>
+                                                <label className="form-check-label">Search Profile Directly</label>
                                             </div>
                                             <div className="col-sm-5 m-2">
                                             <input type="text" id="search" name="Data" className="form-control" placeholder={this.state.checked ? `Find a profile` : `Search for profiles`} value={this.state.Data} onChange={(e) => {this.setState({ [e.target.name] : e.target.value})}} />
