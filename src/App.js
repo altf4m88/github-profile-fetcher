@@ -29,13 +29,15 @@ class App extends Component{
   render(){
     return(
       <React.Fragment>
-        <Provider store= {this.store}/>
-        <Nav store={this.store}/>
+        <Provider store={this.store}>
+        
         <Router>
+        <Nav store={this.store}/>
           <Route exact path='/' component={Main} /> 
           <Route exact path='/search/:id' component={Data}/>
           <Route exact path='/profile/:login' component={Profile}/>
         </Router>
+        </Provider>
       </React.Fragment>
     );
   }
