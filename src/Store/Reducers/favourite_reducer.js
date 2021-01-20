@@ -27,6 +27,8 @@ function Favourite(state = initState, action){
             } else {
                 console.log("this item already exists");
             }
+
+            return state;
         case DELETE_FROM_FAVOURITES:
             let deleteValue = action.payload;
             let arr = state.favouriteData;
