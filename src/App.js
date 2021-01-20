@@ -5,6 +5,12 @@ import Main from './Components/GitHub/Main';
 import Data from './Components/GitHub/Data';
 import Profile from './Components/GitHub/Profile';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
+
+//store
+import {createStore} from 'redux';
+import rootReducer from './Store/Reducers';
+
 
 class App extends Component{
   constructor(props){
@@ -12,12 +18,19 @@ class App extends Component{
     this.state = {
 
     };
+
+    this.store = createStore(
+      rootReducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__&&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
   }
 
   render(){
     return(
       <React.Fragment>
-        <Nav />
+        <Provider store= {this.store}/>
+        <Nav store={this.store}/>
         <Router>
           <Route exact path='/' component={Main} /> 
           <Route exact path='/search/:id' component={Data}/>
