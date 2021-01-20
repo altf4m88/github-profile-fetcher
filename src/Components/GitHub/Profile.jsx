@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import Repositories from './Repositories';
+import PropType from 'prop-types';
+import {connect} from 'react-redux';
+import {addToFavourites, deleteFromFavourites, getFavouriteState} from '../../Store/Actions';
+
 
 class Profile extends Component{
     constructor(props){
         super(props);
         this.state = {
-            user : []
+            user : [],
+            isFavourite : false
         };
+
+        //get fav state
+        this.props.getFavouriteState();
 
         const fetchProfile = async (user) => {
             const apiRequest = await fetch(`https://api.github.com/users/${user}`);
@@ -19,6 +27,30 @@ class Profile extends Component{
                 this.setState({user: res});
             }
         });
+
+        
+    }
+
+    async componentDidMount(){
+        console.log('profile', this.props.Favourite.favouriteData);
+        let data = this.props.Favourite.favouriteData;
+        let user = this.props.match.params.login;
+
+        for(let index = 0; index < data.length; index++){
+            const element = data[index];
+            if(element === user){
+                this.setState({isFavourite: true});
+            }
+        }
+    }
+
+    AddToFav = () => {
+        this.props.addToFavourites(this.state.user.login);
+        this.setState({isFavourite : true})
+    }
+    RemoveFromFav = () => {
+        this.props.deleteFromFavourites(this.state.user.login);
+        this.setState({isFavourite : false})
     }
 
     Profile(){
@@ -35,7 +67,12 @@ class Profile extends Component{
                 <div className="row">
                 <div className="col-lg-12 col-md-12">
                     <div className="SUsersData">
-                    <i className="fas fa-heart  NotFave"></i>
+                    {
+                        this.state.isFavourite === false ?
+                        <i onClick={this.AddToFav} className='fas fa-heart NotFave'></i> 
+                        :
+                        <i onClick={this.RemoveFromFav} className='fas fa-heart Fave'></i>
+                    }
                     <h4>Name :
                     <i className="bl">{this.state.user.name}</i>   
                     </h4>
@@ -65,14 +102,23 @@ class Profile extends Component{
     render(){
         return (
             <React.Fragment>
-                {this.Profile()}
-            
-                        
-                        
+                {this.Profile()}       
             </React.Fragment>
         );
     }
 }
 
+Profile.propTypes = {
+    addToFavourites : PropType.func.isRequired,
+    deleteFromFavourites : PropType.func.isRequired,
+    getFavouriteState : PropType.func.isRequired,
+    Favourite: PropType.object.isRequired
+}
 
-export default Profile;
+const mapStateToProps = (state) => ({
+    Favourite: state.Favourite
+})
+
+
+
+export default connect(mapStateToProps, {addToFavourites, deleteFromFavourites, getFavouriteState})(Profile);
