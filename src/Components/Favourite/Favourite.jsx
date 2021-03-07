@@ -14,7 +14,6 @@ class Favourite extends Component {
     }
 
     async data(){
-        console.log('Store2', this.props);
         let data = await this.props.Favourite.favouriteData;
         let userArray = [];
 
@@ -80,17 +79,17 @@ class Favourite extends Component {
                 <div className="album py-5 bg-light">
                     <div className="container">
                         <div className="row">
-                            {this.state.users.map(user => {
-                                <div key={user.id} className="col-md-4">
+                            {this.state.users.map(user => ( 
+                                <div key={user.id} className="col-md-3 cp">
                                     <div key={user.id} className="card mb-4 shadow-sm">
-                                        <img className="bd-placeholder-img card-img-top" width="100%" height="225" src={user.avatar_url} alt=''  />
+                                        <img className="bd-placeholder-img card-img-top" width="50%" height="50%" src={user.avatar_url} alt=''  />
                                         <div className="card-body">
                                             <p className="card-text text-center">
                                                 {user.login}
                                             </p>
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <div className="btn-group">
-                                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => {this.getUser(user.login)}}>View</button>
+                                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => {this.getUser(user.login)}} key={user.id}>View</button>
                                                 </div>
                                                 {user.isUserInFavourite 
                                                     ? <button type="button" className="btn btn-sm " onClick={() => {this.removeFromFavourite(user.login)}}><i className="fas fa-heart Fave"></i></button>
@@ -100,7 +99,7 @@ class Favourite extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            })}
+                            ))}
                             
                         </div>
                     </div>
