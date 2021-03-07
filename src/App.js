@@ -4,6 +4,7 @@ import Nav from './Components/Nav/Nav';
 import Main from './Components/GitHub/Main';
 import Data from './Components/GitHub/Data';
 import Profile from './Components/GitHub/Profile';
+import Favourite from './Components/Favourite/Favourite';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
@@ -32,10 +33,11 @@ class App extends Component{
         <Provider store={this.store}>
         
         <Router>
-        <Nav store={this.store}/>
+          <Nav store={this.store}/>
           <Route exact path='/' component={Main} /> 
           <Route exact path='/search/:id' component={Data}/>
           <Route exact path='/profile/:login' component={Profile}/>
+          <Route exact path='/favourite' component={Favourite}/>
         </Router>
         </Provider>
       </React.Fragment>
