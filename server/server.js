@@ -27,7 +27,7 @@ connection.connect((err) => {
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/', express.static(path.join(__dirname, 'react')));
 
-//app.use('/api/users', User)
+app.use('/api/users', User)
 
 const port = process.env.PORT || 3000;
 
