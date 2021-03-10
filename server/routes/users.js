@@ -50,19 +50,19 @@ route.post('/register', async (req, res) => {
     });
 })
 
-const jwtPrivateSecret = "";
+const jwtPrivateSecret = "altF4jwtTokenMrnt88";
 
 route.post('/login', async(req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.data.email;
+    const password = req.body.data.password;
 
     connection.query(`SELECT * FROM users WHERE email='${email}' AND password= '${password}'`, async (err, result) => {
-        if(result.length !== 0){
+        if(result){
             jwt.sign({UserEmail: email}, jwtPrivateSecret, (err, token) => {
                 res.status(200).send({token : token});
             });
         }
-        if(result.length === 0){
+        if(!result){
             res.status(400).send({message:'Error not found'});
         }
     });

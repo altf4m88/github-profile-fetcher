@@ -5,12 +5,12 @@ import Main from './Components/GitHub/Main';
 import Data from './Components/GitHub/Data';
 import Profile from './Components/GitHub/Profile';
 import Favourite from './Components/Favourite/Favourite';
-import MainLogin from './Components/LoginRegister/MainLogin';
+import MainPage from './Components/LoginRegister/MainPage';
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
-import {RegisterUserState} from './Store/Actions'
+import {registerUserState} from './Store/Actions'
 
 //store
 import {createStore} from 'redux';
@@ -33,7 +33,7 @@ class App extends Component{
 
   logout = () => {
     localStorage.removeItem('Token');
-    this.store.dispatch(RegisterUserState(false));
+    this.store.dispatch(registerUserState(false));
     this.setState({isAuthenticated: false});
   }
 
@@ -47,7 +47,7 @@ class App extends Component{
             <Route exact path='/search/:id' component={Data}/>
             <Route exact path='/profile/:login' component={Profile}/>
             <Route exact path='/favourite' component={Favourite}/>
-            <Route exact path='/login' component={MainLogin}/>
+            <Route exact path='/login' component={MainPage}/>
           </Router>
         </Provider>
       </React.Fragment>
