@@ -46,7 +46,7 @@ class Login extends Component{
         return (
             <React.Fragment>   
                 { this.state.error ?
-                <div className="alert alert-danger" role="alert">
+                <div className="p-3 alert alert-danger" role="alert">
                     {this.state.error}</div> : '' 
                 } 
                 <hr></hr>                         
