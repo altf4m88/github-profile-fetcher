@@ -30,6 +30,10 @@ class Nav extends Component{
                         </Link>
                     </nav>
                     {this.state.isAuthenticated ?
+                    <Link to='/user-profile' className='p-2 text-dark'>
+                        <i className="fas fas-user"></i> Profile
+                    </Link> : ''}
+                    {this.state.isAuthenticated ?
                     <button onClick={this.logout} className="btn btn-outline-danger">Logout</button> :
                     <Link to='/login' className="p-2 text-dark">
                         <button className="btn btn-outline-primary">Sign Up</button>

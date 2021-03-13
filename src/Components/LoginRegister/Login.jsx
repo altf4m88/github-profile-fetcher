@@ -30,24 +30,26 @@ class Login extends Component{
 
         axios.post(`${this.props.URL}/login`, {data})
         .then((res) => {
+            console.log(res)
+            console.log(this.state.errors)
             if(res['data']){
-                localStorage.setItem('Token', res.data.token);
+                localStorage.setItem('token', res.data.token);
                 this.props.registerUserState(true);
-                this.props.props.history.push('/profile')
-            } else if(!res) {
+                this.props.props.history.push('/user-profile')
+            } else if(res.status !== 200) {
+                console.log('here')
                 const err = res.data.message;
-                this.setState({error: err});
+                this.setState({errors: err});
             }
         })
-        .catch(err => this.setState({error: 'Check your email and password'}));
     }
 
     render(){
         return (
             <React.Fragment>   
-                { this.state.error ?
+                { this.state.errors.length !== 0 ?
                 <div className="p-3 alert alert-danger" role="alert">
-                    {this.state.error}</div> : '' 
+                    {this.state.errors}</div> : '' 
                 } 
                 <hr></hr>                         
                 <form className="form-signin">

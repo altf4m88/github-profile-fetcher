@@ -2,7 +2,6 @@ const mysql = require('mysql');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
-const { Router } = require('express');
 
 const route = express.Router();
 
@@ -32,7 +31,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
         const name = file.originalname
-        .toLocaleLowerCase
+        .toLowerCase()
         .split(" ")
         .join("-");
         const extension = MIME_TYPE_MAP[file.mimetype];
@@ -54,9 +53,9 @@ const selectOrCreateTable = () => {
 selectOrCreateTable();
 
 route.post('/register', async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    const name = req.body.name;
+    const email = req.body.data.email;
+    const password = req.body.data.password;
+    const name = req.body.data.name;
 
     connection.query(`SELECT * FROM users WHERE email = '${email}'`, (err, result) => {
         if(err){
@@ -75,11 +74,11 @@ route.post('/register', async (req, res) => {
     });
 })
 
-const jwtPrivateSecret = "";
+const jwtPrivateSecret = "AltF4mrntmeinlieb";
 
 route.post('/login', async(req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.data.email;
+    const password = req.body.data.password;
 
     connection.query(`SELECT * FROM users WHERE email='${email}' AND password= '${password}'`, async (err, result) => {
         if(result){
@@ -97,7 +96,7 @@ route.get('/get-user', async (req, res) => {
     const Token = req.headers['authorization'];
     let decodedToken = jwt.decode(Token, {complete: true});
     const UserEmail = decodedToken.payload.UserEmail;
-    
+
     const query = `SELECT * FROM users WHERE email='${UserEmail}';`;
 
     connection.query(query, (err, result) => {
@@ -113,6 +112,7 @@ const upload = multer({
 
 route.put('/update/:id', upload, (req, res, next)=> {
     if(req.file && req.file !== ''){
+        console.log("work")
         const id = req.params.id;
         const URL = req.protocol + "://" + req.get("host");
         const picture = URL + "/images/" + req.file.filename;
