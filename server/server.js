@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 const connection = mysql.createConnection({
-    host:'127.0.0.1',
-    user:'root',
-    database: 'git_profile_fetcher'
+    host:'',
+    user:'',
+    database: ''
 })
 
 connection.connect((err) => {
