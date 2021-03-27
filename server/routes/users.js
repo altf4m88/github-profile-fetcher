@@ -6,9 +6,9 @@ const multer = require('multer');
 const route = express.Router();
 
 const connection = mysql.createConnection({
-    host:'',
-    user:'',
-    database: ''
+    host:'127.0.0.1',
+    user:'root',
+    database: 'git_profile_fetcher'
 })
 
 connection.connect((err) => {
@@ -74,7 +74,7 @@ route.post('/register', async (req, res) => {
     });
 })
 
-const jwtPrivateSecret = "";
+const jwtPrivateSecret = "AltF4mrntmeinlieb";
 
 route.post('/login', async(req, res) => {
     const email = req.body.data.email;
